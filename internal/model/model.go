@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"log"
 	"time"
 )
 
@@ -35,22 +36,24 @@ func NewDBEngine(dbSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 }
 
 //创建后
-func (m *Model) BeforeSave(tx *gorm.DB) (err error) {
+func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
+	log.Println("BeforeCreate")
 	m.CreatedOn = time.Now()
 	//tx.Model(m).Updates(map[string]interface{}{"created_by": m.CreatedBy, "created_on": nowTime})
 	return
 }
 
 //更新后
-func (m *Model) AfterUpdate(tx *gorm.DB) (err error) {
-	nowTime := time.Now().Unix()
-	tx.Model(m).Updates(map[string]interface{}{"modified_by": m.ModifiedBy, "modified_on": nowTime})
+func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
+	log.Println("BeforeUpdate")
+	m.ModifiedOn = time.Now()
 	return
 }
 
 //删除后
-func (m *Model) AfterDelete(tx *gorm.DB) (err error) {
-	nowTime := time.Now().Unix()
-	tx.Model(m).Updates(map[string]interface{}{"is_del": 1, "deleted_on": nowTime})
+func (m *Model) BeforeDelete(tx *gorm.DB) (err error) {
+	log.Println("BeforeDelete")
+	m.IsDel = 1
+	m.DeletedOn = time.Now()
 	return
 }
