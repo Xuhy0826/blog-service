@@ -1,0 +1,5 @@
+2021/06/21 14:47:37 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/api/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624258057798945800}
+2021/06/21 15:29:28 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/api/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624260568810291200}
+2021/06/21 15:34:07 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/api/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624260847563450700}
+2021/06/21 15:57:10 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/api/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624262230712356100}
+2021/06/21 15:58:57 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/api/v1/main.go: 23 main.init.0"],"level":"error","message":"app.BindAndValid errs: Key: 'TagListRequest.State' Error:Field validation for 'State' failed on the 'oneof' tag","time":1624262337224781800}
