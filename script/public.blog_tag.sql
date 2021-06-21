@@ -1,11 +1,11 @@
 CREATE TABLE blog_tag (
     id SERIAL PRIMARY KEY,
     name varchar(100),
-    created_on integer DEFAULT '0' ,  --COMMENT '创建时间'
+    created_on timestamp ,  --COMMENT '创建时间'
   	created_by varchar(100) DEFAULT '' , --COMMENT '创建人'
-  	modified_on integer DEFAULT '0' , --COMMENT '修改时间'
+  	modified_on timestamp , --COMMENT '修改时间'
   	modified_by varchar(100) DEFAULT '' , --COMMENT '修改人'
-  	deleted_on integer DEFAULT '0' , --COMMENT '删除时间'
+  	deleted_on timestamp , --COMMENT '删除时间'
   	is_del smallint DEFAULT '0' , --COMMENT '是否删除 0 为未删除、1 为已删除'
   	state smallint DEFAULT '1'  --COMMENT '状态 0 为禁用、1 为启用'
 );
