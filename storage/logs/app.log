@@ -40,3 +40,15 @@
 2021/06/22 00:02:09 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624291329752454000}
 2021/06/22 00:06:20 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624291580997402000}
 2021/06/22 00:06:39 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624291599194025000}
+2021/06/22 08:40:32 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624322432983318700}
+2021/06/22 08:50:02 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624323002232230700}
+2021/06/22 08:50:08 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"error","message":"svc.UpdateTag err: commit unexpectedly resulted in rollback","time":1624323008448920000}
+2021/06/22 09:03:13 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624323793719919700}
+2021/06/22 09:07:36 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"error","message":"svc.UpdateTag err: commit unexpectedly resulted in rollback","time":1624324056265213400}
+2021/06/22 09:13:06 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624324386528117500}
+2021/06/22 09:13:18 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624324398165576300}
+2021/06/22 09:20:22 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624324822663770600}
+2021/06/22 09:36:41 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624325801400707100}
+2021/06/22 09:36:56 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624325816932966100}
+2021/06/22 09:43:29 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624326209389878300}
+2021/06/22 09:45:48 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624326348521202700}

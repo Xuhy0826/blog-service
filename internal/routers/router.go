@@ -2,7 +2,11 @@ package routers
 
 import (
 	_ "blog-service/docs"
+	"blog-service/global"
 	v1 "blog-service/internal/routers/api/v1"
+	"blog-service/pkg/app"
+	"blog-service/pkg/errcode"
+	"errors"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -34,4 +38,16 @@ func NewRouter() *gin.Engine {
 	}
 
 	return r
+}
+
+//Validate 参数验证
+func Validate(param interface{}, c *gin.Context) (*app.Response, error) {
+	response := app.NewResponse(c)
+	valid, errs := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.Errorf("app.BindAndValid errs: %v", errs)
+		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return nil, errors.New("invalid param")
+	}
+	return response, nil
 }

@@ -35,7 +35,7 @@ func NewDBEngine(dbSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	return db, nil
 }
 
-//创建后
+//创建前
 func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
 	log.Println("BeforeCreate")
 	m.CreatedOn = time.Now()
@@ -46,7 +46,6 @@ func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
 //更新后
 func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
 	log.Println("BeforeUpdate")
-	m.ModifiedOn = time.Now()
 	return
 }
 
