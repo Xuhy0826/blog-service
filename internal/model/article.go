@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 type Article struct {
 	*Model
 	Title         string `json:"title"`
-	Desc          string `json:"desc"`
+	Description   string `json:"description"`
 	Content       string `json:"content"`
 	CoverImageUrl string `json:"cover_image_url"`
 	State         uint8  `json:"state"`

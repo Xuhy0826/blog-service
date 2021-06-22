@@ -2,9 +2,9 @@ package v1
 
 import (
 	"blog-service/global"
-	"blog-service/internal/routers"
 	"blog-service/internal/service"
 	"blog-service/pkg/app"
+	"blog-service/pkg/convert"
 	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
 )
@@ -23,8 +23,8 @@ func NewArticle() Article {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles/:id [get]
 func (a Article) Get(c *gin.Context) {
-	param := service.GetArticleRequest{}
-	response, err := routers.Validate(&param, c)
+	param := service.GetArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
+	response, err := Validate(&param, c)
 	if err != nil {
 		return
 	}
@@ -51,7 +51,7 @@ func (a Article) Get(c *gin.Context) {
 // @Router /api/v1/articles [get]
 func (a Article) List(c *gin.Context) {
 	param := service.ListArticleRequest{}
-	response, err := routers.Validate(&param, c)
+	response, err := Validate(&param, c)
 	if err != nil {
 		return
 	}
@@ -67,7 +67,11 @@ func (a Article) List(c *gin.Context) {
 			State: param.State,
 		},
 	)
-
+	if err != nil {
+		global.Logger.Errorf("svc.CountArticle err: %v", err)
+		response.ToErrorResponse(errcode.ErrorCountArticleFail)
+		return
+	}
 	tags, err := svc.GetArticleList(&param, &pager)
 	if err != nil {
 		global.Logger.Errorf("svc.GetArticleList err: %v", err)
@@ -93,7 +97,7 @@ func (a Article) List(c *gin.Context) {
 // @Router /api/v1/articles [post]
 func (a Article) Create(c *gin.Context) {
 	param := service.CreateArticleRequest{}
-	response, err := routers.Validate(&param, c)
+	response, err := Validate(&param, c)
 	if err != nil {
 		return
 	}
@@ -124,8 +128,8 @@ func (a Article) Create(c *gin.Context) {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles [put]
 func (a Article) Update(c *gin.Context) {
-	param := service.UpdateArticleRequest{}
-	response, err := routers.Validate(&param, c)
+	param := service.UpdateArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
+	response, err := Validate(&param, c)
 	if err != nil {
 		return
 	}
@@ -150,8 +154,8 @@ func (a Article) Update(c *gin.Context) {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles/{id} [delete]
 func (a Article) Delete(c *gin.Context) {
-	param := service.DeleteArticleRequest{}
-	response, err := routers.Validate(&param, c)
+	param := service.DeleteArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
+	response, err := Validate(&param, c)
 	if err != nil {
 		return
 	}

@@ -24,18 +24,21 @@ func (d *Dao) GetArticleList(title string, state uint8, page, pageSize int) ([]*
 	return article.List(d.engine, pageOffset, pageSize)
 }
 
-func (d *Dao) CreateArticle(title string, state uint8, createdBy string) error {
+func (d *Dao) CreateArticle(title, content, description, coverUrl string, state uint8, createdBy string) error {
 	article := model.Article{
 		Title: title,
 		State: state,
+		Content: content,
+		Description: description,
+		CoverImageUrl: coverUrl,
 		Model: &model.Model{CreatedBy: createdBy},
 	}
 
 	return article.Create(d.engine)
 }
 
-func (d *Dao) UpdateArticle(id uint32, title string, state uint8, modifiedBy string) error {
-	article := model.Tag{
+func (d *Dao) UpdateArticle(id uint32, title, content, description, coverUrl string, state uint8, modifiedBy string) error {
+	article := model.Article{
 		Model: &model.Model{ID: id},
 	}
 	values := map[string]interface{}{
@@ -46,12 +49,20 @@ func (d *Dao) UpdateArticle(id uint32, title string, state uint8, modifiedBy str
 	if title != "" {
 		values["title"] = title
 	}
-
+	if content != "" {
+		values["content"] = content
+	}
+	if coverUrl != "" {
+		values["cover_image_url"] = coverUrl
+	}
+	if description != "" {
+		values["description"] = description
+	}
 	return article.Update(d.engine, values)
 }
 
 func (d *Dao) DeleteArticle(id uint32) error {
-	article := model.Tag{
+	article := model.Article{
 		Model: &model.Model{ID: id},
 	}
 	return article.Delete(d.engine)

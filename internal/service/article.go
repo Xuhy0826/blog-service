@@ -20,29 +20,29 @@ type ListArticleRequest struct {
 }
 
 type CreateArticleRequest struct {
-	Title         string `json:"title" binding:"required max=25"`
+	Title         string `json:"title" binding:"required,max=25"`
 	Description   string `json:"description" binding:"max=200"`
-	CoverImageUrl string `json:"cover_image_url"`
-	Content       string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url" binding:""`
+	Content       string `json:"content" binding:""`
 	CreatedBy     string `json:"created_by" binding:"required"`
-	State         uint8  `json:"state"`
+	State         uint8  `json:"state" binding:""`
 }
 
 type UpdateArticleRequest struct {
 	ID            uint32 `form:"id" binding:"required,gte=1"`
 	Title         string `json:"title" binding:"required max=25"`
 	Description   string `json:"description" binding:"max=200"`
-	CoverImageUrl string `json:"cover_image_url"`
-	Content       string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url" binding:""`
+	Content       string `json:"content" binding:""`
 	ModifiedBy    string `json:"modified_by" binding:"required"`
-	State         uint8  `json:"state"`
+	State         uint8  `json:"state" binding:""`
 }
 
 type DeleteArticleRequest struct {
 	ID uint32 `form:"id" binding:"required,gte=1"`
 }
 
-func (svc *Service) GetArticle(param *GetArticleRequest) (*model.Article, error){
+func (svc *Service) GetArticle(param *GetArticleRequest) (*model.Article, error) {
 	return svc.dao.GetArticle(param.ID)
 }
 
@@ -55,11 +55,11 @@ func (svc *Service) GetArticleList(param *ListArticleRequest, pager *app.Pager) 
 }
 
 func (svc *Service) CreateArticle(param *CreateArticleRequest) error {
-	return svc.dao.CreateArticle(param.Title, param.State, param.CreatedBy)
+	return svc.dao.CreateArticle(param.Title, param.Content, param.Description, param.CoverImageUrl, param.State, param.CreatedBy)
 }
 
 func (svc *Service) UpdateArticle(param *UpdateArticleRequest) error {
-	return svc.dao.UpdateArticle(param.ID, param.Title, param.State, param.ModifiedBy)
+	return svc.dao.UpdateArticle(param.ID, param.Title, param.Content, param.Description, param.CoverImageUrl, param.State, param.ModifiedBy)
 }
 
 func (svc *Service) DeleteArticle(param *DeleteArticleRequest) error {
