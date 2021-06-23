@@ -69,6 +69,8 @@ func (e *Error) StatusCode() int {
 		fallthrough
 	case UnauthorizedTokenTimeout.Code():
 		return http.StatusUnauthorized
+	case NoAuthorizedToken.Code():
+		return http.StatusUnauthorized
 	case TooManyRequests.Code():
 		return http.StatusTooManyRequests
 	}

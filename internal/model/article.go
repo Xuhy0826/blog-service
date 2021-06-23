@@ -30,7 +30,7 @@ func (a Article) Count(db *gorm.DB) (int64, error) {
 
 func (a Article) GetArticle(db *gorm.DB) (*Article, error) {
 	var article *Article
-	if err := db.Model(&article).Where("title = ?", a.ID).Error; err != nil {
+	if err := db.Where("id = ?", a.ID).First(&article).Error; err != nil {
 		return nil, err
 	}
 	return article, nil

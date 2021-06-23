@@ -69,3 +69,16 @@
 2021/06/22 21:30:13 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"error","message":"app.BindAndValid errs: Key: 'DeleteArticleRequest.ID' Error:Field validation for 'ID' failed on the 'required' tag","time":1624368613252965000}
 2021/06/22 21:34:32 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624368872647598000}
 2021/06/22 21:37:09 {"callers":["/Users/xuhongyu/workspace/Github/demo/go-gin-http/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624369029589504000}
+2021/06/23 11:19:51 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624418391881253100}
+2021/06/23 11:27:19 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624418839592331200}
+2021/06/23 11:30:56 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624419056872107500}
+2021/06/23 11:30:59 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"error","message":"svc.GetArticle err: cannot convert 1 to Text","time":1624419059347773200}
+2021/06/23 11:31:57 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624419117882260900}
+2021/06/23 11:31:59 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"error","message":"article(id = 1) not found","time":1624419119452150600}
+2021/06/23 11:37:06 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624419426833363200}
+2021/06/23 11:44:25 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624419865037527200}
+2021/06/23 17:11:46 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624439506775753900}
+2021/06/23 17:54:48 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624442088361012300}
+2021/06/23 18:13:49 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624443229550516300}
+2021/06/23 18:16:17 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624443377077052900}
+2021/06/23 18:16:55 {"callers":["D:/workspace/GitHub_local/demo/blog-service/cmd/v1/main.go: 23 main.init.0"],"level":"info","message":"blog-service init successfully","time":1624443415913449500}

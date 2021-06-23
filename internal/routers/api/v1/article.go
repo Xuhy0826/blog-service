@@ -6,7 +6,9 @@ import (
 	"blog-service/pkg/app"
 	"blog-service/pkg/convert"
 	"blog-service/pkg/errcode"
+	"errors"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type Article struct{}
@@ -32,6 +34,11 @@ func (a Article) Get(c *gin.Context) {
 	svc := service.New(c.Request.Context())
 	article, err := svc.GetArticle(&param)
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			global.Logger.Errorf("article(id = %d) not found", param.ID)
+			response.ToErrorResponse(errcode.NotFound)
+			return
+		}
 		global.Logger.Errorf("svc.GetArticle err: %v", err)
 		response.ToErrorResponse(errcode.ErrorGetArticleFail)
 		return
