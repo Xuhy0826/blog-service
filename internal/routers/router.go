@@ -15,15 +15,16 @@ import (
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	apiv1 := r.Group("/api/v1")
-
 	//
 	//配置中间件
 	//
+	//链路追踪中间件
+	r.Use(middleware.Tracing())
+
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery())
+
 	//限流中间件
 	var methodLimiters = limiter.NewMethodLimiter().AddBuckets(limiter.LimiterBucketRule{
 		Key:          "/auth",
@@ -34,6 +35,8 @@ func NewRouter() *gin.Engine {
 	r.Use(middleware.RateLimiter(methodLimiters))
 	//超时中间件
 	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
+
+	apiv1 := r.Group("/api/v1")
 	//为api注册中间件：鉴权
 	apiv1.Use(middleware.JWT())
 	//为api注册中间件：日志

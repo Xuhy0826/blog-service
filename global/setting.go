@@ -3,6 +3,7 @@ package global
 import (
 	"blog-service/pkg/logger"
 	"blog-service/pkg/setting"
+	"github.com/opentracing/opentracing-go"
 	"gorm.io/gorm"
 )
 
@@ -13,4 +14,5 @@ var (
 	JWTSetting      *setting.JwtS
 	DBEngine        *gorm.DB
 	Logger          *logger.Logger
+	Tracer          opentracing.Tracer
 )

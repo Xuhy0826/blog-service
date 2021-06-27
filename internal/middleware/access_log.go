@@ -43,7 +43,8 @@ func AccessLog() gin.HandlerFunc {
 		//response：当前的请求结果响应主体。
 		//status_code：当前的响应结果状态码。
 		//begin_time/end_time：调用方法的开始时间，调用方法结束的结束时间。
-		global.Logger.WithFields(fields).Infof("access log: method: %s, status_code: %d, begin_time: %d, end_time: %d",
+		global.Logger.WithFields(fields).Infof(c,
+			"access log: method: %s, status_code: %d, begin_time: %d, end_time: %d",
 			c.Request.Method,
 			bodyWriter.Status(),
 			beginTime,

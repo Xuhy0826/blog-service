@@ -2,6 +2,7 @@ package model
 
 import (
 	"blog-service/pkg/setting"
+	"blog-service/pkg/tracer"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -19,6 +20,7 @@ type Model struct {
 	IsDel      uint8     `json:"is_del"`
 }
 
+
 func NewDBEngine(dbSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai",
 		dbSetting.Host,
@@ -31,6 +33,15 @@ func NewDBEngine(dbSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	//use gorm plugin，trace sql
+	_ = db.Use(&tracer.OpentracingPlugin{})
+	//span := opentracing.StartSpan("gormTracing")
+	//defer span.Finish()
+	////把生成的Root Span写入到Context上下文，获取一个子Context
+	////通常在Web项目中，Root Span由中间件生成
+	//ctx := opentracing.ContextWithSpan(context.Background(), span)
+	//session := db.WithContext(ctx)
 
 	return db, nil
 }
